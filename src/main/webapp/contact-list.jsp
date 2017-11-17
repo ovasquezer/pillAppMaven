@@ -58,31 +58,36 @@
                       <div class="panel-body">
 
                         <div id="education_fields"></div>
-                        <div class="col-sm-3 nopadding">
+                        <div class="col-sm-2 multifield-spacing nopadding">
                           <div class="form-group">
-                            <input type="text" class="form-control" id="Schoolname" name="Schoolname[]" value="" placeholder="School name">
+                            <input type="text" class="form-control" id="Firstname" name="Firstname[]" value="" placeholder="First Name">
                           </div>
                         </div>
-                        <div class="col-sm-3 nopadding">
+                        <div class="col-sm-2 multifield-spacing nopadding">
                           <div class="form-group">
-                            <input type="text" class="form-control" id="Major" name="Major[]" value="" placeholder="Major">
+                            <input type="text" class="form-control" id="Last Name" name="Lastname[]" value="" placeholder="Last Name">
                           </div>
                         </div>
-                        <div class="col-sm-3 nopadding">
+                        <div class="col-sm-2 multifield-spacing nopadding">
                           <div class="form-group">
-                            <input type="text" class="form-control" id="Degree" name="Degree[]" value="" placeholder="Degree">
+                            <input type="number" class="form-control" id="Phonenumber" name="Phonenumber[]" value="" placeholder="Phone">
+                          </div>
+                        </div>
+                        <div class="col-sm-2 multifield-spacing nopadding">
+                          <div class="form-group">
+                            <input type="email" class="form-control" id="Email" name="Email[]" value="" placeholder="Email">
                           </div>
                         </div>
 
-                        <div class="col-sm-3 nopadding">
+                        <div class="col-sm-2 multifield-spacing-type nopadding">
                           <div class="form-group">
                             <div class="input-group">
-                              <select class="form-control" id="educationDate" name="educationDate[]">
-                                <option value="">Date</option>
-                                <option value="2015">2015</option>
-                                <option value="2016">2016</option>
-                                <option value="2017">2017</option>
-                                <option value="2018">2018</option>
+                              <select class="form-control" id="contactType" name="contactType[]">
+                                <option value="">Contact Type</option>
+                                <option value="Medic">Medic</option>
+                                <option value="Pharmacy">Pharmacy</option>
+                                <option value="Relative">Relative</option>
+                                <option value="Other">Other</option>
                               </select>
                               <div class="input-group-btn">
                                 <button class="btn btn-success" type="button"  onclick="education_fields();"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </button>
@@ -93,9 +98,8 @@
                         <div class="clear"></div>
                       </div>
                       <div class="panel-footer">
-                        <small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another form field :)</small>, <small>Press <span class="glyphicon glyphicon-minus gs"></span> to remove form field :)</small>
+                        <small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another form field.</small>, <small>Press <span class="glyphicon glyphicon-minus gs"></span> to remove form field.</small>
                       </div>
-                      <div class="panel-footer"><small><em><a href="http://shafi.info/">More Info - Developer Shafi (Bangladesh)</a></em></em></small></div>
                     </div>                  
                   <!-- End of multi field component -->
 

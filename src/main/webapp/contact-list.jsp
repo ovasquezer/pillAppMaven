@@ -98,9 +98,8 @@
                         <div class="clear"></div>
                       </div>
                       <div class="panel-footer">
-                        <small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another form field :)</small>, <small>Press <span class="glyphicon glyphicon-minus gs"></span> to remove form field :)</small>
+                        <small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another form field.</small>, <small>Press <span class="glyphicon glyphicon-minus gs"></span> to remove form field.</small>
                       </div>
-                      <div class="panel-footer"><small><em><a href="http://shafi.info/">More Info - Developer Shafi (Bangladesh)</a></em></em></small></div>
                     </div>                  
                   <!-- End of multi field component -->
 

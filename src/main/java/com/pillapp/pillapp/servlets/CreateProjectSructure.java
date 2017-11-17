@@ -5,10 +5,10 @@
  */
 package com.pillapp.pillapp.servlets;
 
-import static com.pillapp.pillapp.utils.Constants.PASSWORD_KEY;
+import static com.pillapp.pillapp.utils.Constants.DOCTOR;
+import static com.pillapp.pillapp.utils.Constants.PATIENT;
+import static com.pillapp.pillapp.utils.Constants.PHARMACY;
 import static com.pillapp.pillapp.utils.Constants.PILLAPP_KEY;
-import static com.pillapp.pillapp.utils.Constants.ROL_KEY;
-import static com.pillapp.pillapp.utils.Constants.USERNAME_KEY;
 import static com.pillapp.pillapp.utils.Constants.USERS_KEY;
 import com.pillapp.pillapp.utils.JCRUtils;
 import java.io.IOException;
@@ -28,8 +28,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jvasquez
  */
-@WebServlet(name = "CreateNewUserServlet", urlPatterns = {"/CreateNewUserServlet"})
-public class CreateNewUserServlet extends HttpServlet {
+@WebServlet(name = "CreateProjectSructure", urlPatterns = {"/CreateProjectSructure"})
+public class CreateProjectSructure extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,42 +42,34 @@ public class CreateNewUserServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, RepositoryException {
-        String username = request.getParameter(USERNAME_KEY);
-        System.out.println("+++++++++ connection 1.1+++++++++++" + request.getParameter(USERNAME_KEY));
-        String password = request.getParameter(PASSWORD_KEY);
-        System.out.println("+++++++++ connection 1.2+++++++++++" + request.getParameter(PASSWORD_KEY));
-        String rol = request.getParameter(ROL_KEY);
-        System.out.println("+++++++++ connection 1.3+++++++++++" + request.getParameter(ROL_KEY));
+        
         JCRUtils jcrUtils = new JCRUtils();
         Session session = jcrUtils.repoLogin();
-        if(null != session){
-            Node root = session.getRootNode();
-            System.out.println("+++++++++ connection 2+++++++++++" + session);
-            System.out.println("+++++++++ connection 2.1+++++++++++" + root.getPath());
-            if(root.hasNode(PILLAPP_KEY)){
-                System.out.println("+++++++++ connection 3+++++++++++");
-                Node app = root.getNode(PILLAPP_KEY);
-                System.out.println("+++++++++ connection 3.1+++++++++++" + app.getPath());
-                Node usersNode = app.getNode(USERS_KEY);
-                System.out.println("+++++++++ connection 3.2+++++++++++" + usersNode.getPath());
-                System.out.println("+++++++++ connection 3.3+++++++++++" + rol);
-                Node rolNode = jcrUtils.getParentUser(usersNode, rol);
-                Node user = jcrUtils.getLoginUser(rolNode, username);
-                if(null == user){
-                    Node userNode;
-                    userNode = rolNode.addNode(username);
-                    userNode.setProperty(PASSWORD_KEY, password);
-                }
-            }
-            System.out.println("+++++++++ connection 4+++++++++++");
-            session.save();
-            session.logout();
-        }
-        
-        
+        Node root = session.getRootNode();
+        Node appNode = jcrUtils.validateNode(root, PILLAPP_KEY);
+        Node usersNode = jcrUtils.validateNode(appNode, USERS_KEY);
+        Node doctorNode = jcrUtils.validateNode(usersNode, DOCTOR);
+        Node patient = jcrUtils.validateNode(usersNode, PATIENT);
+        Node pharmacy = jcrUtils.validateNode(usersNode, PHARMACY);
+        session.save();
+        session.logout();
         
         response.setContentType("text/html;charset=UTF-8");
-        response.sendRedirect("/pillApp/sign-in.jsp");  
+        PrintWriter out = response.getWriter();
+        try {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet CreateProjectSructure</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet CreateProjectSructure at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        } finally {
+            out.close();
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -95,7 +87,7 @@ public class CreateNewUserServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (RepositoryException ex) {
-            Logger.getLogger(CreateNewUserServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CreateProjectSructure.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -113,7 +105,7 @@ public class CreateNewUserServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (RepositoryException ex) {
-            Logger.getLogger(CreateNewUserServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CreateProjectSructure.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -28,10 +28,10 @@
 
     <div class="container">
 
-      <form class="form-signin" id="registerForm">
+      <form class="form-signin" id="registerForm" action="http://localhost:8084/pillApp/CreateNewUserServlet?rol=test" method="get">
         <h2 class="form-signin-heading" align="center">Registration </h2>
         <label for="inputFirstName" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <input type="email" id="username" name="username" class="form-control" placeholder="Email address" required autofocus>
         <br>
         <label for="inputSecondName" class="sr-only">First Name</label>
         <input type="text" id="inputFirstName" class="form-control" placeholder="First Name" required autofocus>
@@ -43,10 +43,10 @@
         <input type="number" id="inputPhone" class="form-control" placeholder="Phone Number" required autofocus>
         <br>
          <label for="userRol" class="sr-only">User Rol</label>
-        <input type="text" id="userRol" class="form-control" placeholder="User Rol" required autofocus>
+        <input type="text" id="rol" name="rol" class="form-control" placeholder="User Rol" required autofocus>
         <br>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
       </form>
 

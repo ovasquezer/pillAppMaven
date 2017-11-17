@@ -57,39 +57,40 @@
                       <div class="panel-heading">Education Experience</div>
                       <div class="panel-body">
 
-                        <div id="fields"></div>
-                        <div class="col-sm-3 nopadding">
+                        <div id="education_fields"></div>
+                        <div class="col-sm-2 multifield-spacing nopadding">
                           <div class="form-group">
                             <input type="number" class="form-control" id="Quantity" name="Quantity[]" value="" placeholder="Quantity">
                           </div>
                         </div>
-                        <div class="col-sm-3 nopadding">
+                        <div class="col-sm-2 multifield-spacing nopadding">
                           <div class="form-group">
-                            <input type="text" class="form-control" id="Name" name="Name[]" value="" placeholder="Name">
+                            <input type="text" class="form-control" id="Medname" name="Medname[]" value="" placeholder="Name">
                           </div>
                         </div>
-                        <div class="col-sm-3 nopadding">
+                        <div class="col-sm-2 multifield-spacing-type nopadding">
                           <div class="form-group">
-                            <input type="datetime-local" class="form-control" id="Time" name="Time[]" value="" placeholder="Time">
+                            <input type="datetime-local" class="form-control" id="Medtime" name="Medtime[]" value="" placeholder="Medication Time">
+                          </div>
+                        </div>
+                        <div class="col-sm-2 multifield-spacing nopadding">
+                          <div class="form-group">
+                            <input type="number" class="form-control" id="Medduration" name="Medduration[]" value="" placeholder="Duration">
                           </div>
                         </div>
 
-                        <div class="col-sm-3 nopadding">
+                        <div class="col-sm-2 nopadding">
                           <div class="form-group">
-                            <input type="number" class="form-control" id="Duration" name="Duration[]" value="" placeholder="Duration">
-                            <div class="input-group">
-                              <div class="input-group-btn">
-                                <button class="btn btn-success" type="button"  onclick="education_fields();"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </button>
-                              </div>
+                            <div class="input-group-btn">
+                              <button class="btn btn-success" type="button"  onclick="education_fields();"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </button>
                             </div>
                           </div>
                         </div>
                         <div class="clear"></div>
                       </div>
                       <div class="panel-footer">
-                        <small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another form field :)</small>, <small>Press <span class="glyphicon glyphicon-minus gs"></span> to remove form field :)</small>
+                        <small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another form field.</small>, <small>Press <span class="glyphicon glyphicon-minus gs"></span> to remove form field.</small>
                       </div>
-                      <div class="panel-footer"><small><em><a href="http://shafi.info/">More Info - Developer Shafi (Bangladesh)</a></em></em></small></div>
                     </div>                  
                   <!-- End of multi field component -->
 

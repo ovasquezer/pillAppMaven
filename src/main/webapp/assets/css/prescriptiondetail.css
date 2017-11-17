@@ -64,7 +64,19 @@ body {
   padding: 2rem;
 }
 
+/* Padding and spacing for multifield */
+@media(min-width: 48em) {
+    .col-sm-2
+    .multifield-spacing {
+        width: 20%
+    }
+    
 
+    .multifield-spacing-type {
+        width: 30%
+    }
+    
+}
 /*
  * Header
  */
@@ -160,13 +172,17 @@ body {
 }
 
 @media (min-width: 62em) {
-  .masthead,
-  .mastfoot,
-  .cover-container {
+  .masthead {
     width: 62rem;
+  }
+  .mastfoot {
+    width: 62rem;
+  }
+  .cover-container {
+    width: 92rem;
   }
   
   .cover-content-container {
-    width: 62rem;
+    width: 82rem;
   }
 }

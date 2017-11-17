@@ -28,17 +28,22 @@
     <div class="container">
 
       <form class="form-signin">
-        <h2 class="form-signin-heading">Registration Information</h2>
+        <h2 class="form-signin-heading" align="center">New Prescription</h2>
         <label for="inputTreatment" class="sr-only">Treatment</label>
         <input type="text" id="inputTreatment" class="form-control" placeholder="Treatment Name" required autofocus>
+        <br>
         <label for="inputDate" class="sr-only">Date</label>
         <input type="date" id="inputDate" class="form-control" placeholder="Prescription Date" required autofocus>
+        <br>
         <label for="inputHospitalName" class="sr-only">Hospital Name</label>
         <input type="text" id="inputHospitalName" class="form-control" placeholder="Hospital Name" required autofocus>
+        <br>
         <label for="inputDoctorFirstName" class="sr-only">Doctor First Name</label>
         <input type="text" id="inputDoctorFirstName" class="form-control" placeholder="Doctor First Name" required autofocus>
+        <br>
         <label for="inputDoctorLastName" class="sr-only">Doctor Last Name</label>
         <input type="text" id="inputDoctorLastName" class="form-control" placeholder="Doctor Last Name" required autofocus>
+        <br>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Continue</button>
       </form>

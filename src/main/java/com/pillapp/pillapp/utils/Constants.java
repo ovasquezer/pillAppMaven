@@ -44,4 +44,8 @@ public class Constants {
     public static final String ROL_KEY = "rol";
     public static final String PILLAPP_KEY = "pillApp";
     public static final String USERS_KEY = "users";
+    public static final String STARTDAY_KEY = "startDate";
+    public static final String ENDDATE_KEY = "endDate";
+    public static final String DESCRIPTION_KEY = "description";
+    
 }

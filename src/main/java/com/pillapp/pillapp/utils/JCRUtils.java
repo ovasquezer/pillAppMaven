@@ -62,16 +62,20 @@ public class JCRUtils {
     public Node getParentUser(Node root, String nodeName) 
             throws RepositoryException{
         Node result = null;
-        Iterator<Node> x = root.getNodes();
-        while(x.hasNext()){
-            Node y = x.next();
-            System.out.println(y.getName());
-        }
         if(root.hasNode(nodeName)){
-            System.out.println("+++++ " + nodeName);
             result = root.getNode(nodeName);
         }
         return result; 
+    }
+    
+    public Node validateNode(Node rootNode, String nodeName) throws RepositoryException{
+        Node result;
+        if(rootNode.hasNode(nodeName)){
+            result = rootNode.getNode(nodeName);
+        } else {
+            result = rootNode.addNode(nodeName);
+        }
+        return result;
     }
     
     public Node getLoginUser(Node parentNode, Node parentNode2, 

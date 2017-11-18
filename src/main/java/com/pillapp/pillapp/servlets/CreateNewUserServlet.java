@@ -12,7 +12,6 @@ import static com.pillapp.pillapp.utils.Constants.USERNAME_KEY;
 import static com.pillapp.pillapp.utils.Constants.USERS_KEY;
 import com.pillapp.pillapp.utils.JCRUtils;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.jcr.Node;
@@ -43,24 +42,15 @@ public class CreateNewUserServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, RepositoryException {
         String username = request.getParameter(USERNAME_KEY);
-        System.out.println("+++++++++ connection 1.1+++++++++++" + request.getParameter(USERNAME_KEY));
         String password = request.getParameter(PASSWORD_KEY);
-        System.out.println("+++++++++ connection 1.2+++++++++++" + request.getParameter(PASSWORD_KEY));
         String rol = request.getParameter(ROL_KEY);
-        System.out.println("+++++++++ connection 1.3+++++++++++" + request.getParameter(ROL_KEY));
         JCRUtils jcrUtils = new JCRUtils();
         Session session = jcrUtils.repoLogin();
         if(null != session){
             Node root = session.getRootNode();
-            System.out.println("+++++++++ connection 2+++++++++++" + session);
-            System.out.println("+++++++++ connection 2.1+++++++++++" + root.getPath());
             if(root.hasNode(PILLAPP_KEY)){
-                System.out.println("+++++++++ connection 3+++++++++++");
                 Node app = root.getNode(PILLAPP_KEY);
-                System.out.println("+++++++++ connection 3.1+++++++++++" + app.getPath());
                 Node usersNode = app.getNode(USERS_KEY);
-                System.out.println("+++++++++ connection 3.2+++++++++++" + usersNode.getPath());
-                System.out.println("+++++++++ connection 3.3+++++++++++" + rol);
                 Node rolNode = jcrUtils.getParentUser(usersNode, rol);
                 Node user = jcrUtils.getLoginUser(rolNode, username);
                 if(null == user){
@@ -69,7 +59,6 @@ public class CreateNewUserServlet extends HttpServlet {
                     userNode.setProperty(PASSWORD_KEY, password);
                 }
             }
-            System.out.println("+++++++++ connection 4+++++++++++");
             session.save();
             session.logout();
         }

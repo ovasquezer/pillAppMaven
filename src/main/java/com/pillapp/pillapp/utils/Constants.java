@@ -36,9 +36,9 @@ public class Constants {
     public static final String RESPONSE = "response";
     public static final String UFT_8_KEY ="UTF-8";
     
-    public static final String DOCTOR = "doctors";
-    public static final String PATIENT = "patients";
-    public static final String PHARMACY = "PHARMACY";
+    public static final String DOCTOR = "doctor";
+    public static final String PATIENT = "patient";
+    public static final String PHARMACY = "pharmacy";
     public static final String USERNAME_KEY = "username";
     public static final String PASSWORD_KEY = "password";
     public static final String ROL_KEY = "rol";

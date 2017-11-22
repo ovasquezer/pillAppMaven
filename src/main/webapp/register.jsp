@@ -27,13 +27,9 @@
   </head>
 
   <body>
-
     <div class="site-wrapper">
-
       <div class="site-wrapper-inner">
-
         <div class="cover-container">
-            
             <header class="masthead clearfix">
                 <div class="inner">
                   <nav class="nav nav-masthead">
@@ -45,11 +41,10 @@
                   </nav>
                 </div>
             </header>
-
-            <form class="form-signin" id="registerForm">
+            <form class="form-signin" id="registerForm" action="http://localhost:8084/pillApp/CreateNewUserServlet?rol=test" method="get">
               <h2 class="form-signin-heading" align="center">Registration </h2>
-              <p>Test</p><label for="inputFirstName" class="sr-only">Email address</label>
-              <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+              <label for="inputFirstName" class="sr-only">Email address</label>
+              <input type="email" id="username" name="username" class="form-control" placeholder="Email address" required autofocus>
               <br>
               <label for="inputSecondName" class="sr-only">First Name</label>
               <input type="text" id="inputFirstName" class="form-control" placeholder="First Name" required autofocus>
@@ -61,19 +56,18 @@
               <input type="number" id="inputPhone" class="form-control" placeholder="Phone Number" required autofocus>
               <br>
                <label for="userRol" class="sr-only">User Rol</label>
-              <input type="text" id="userRol" class="form-control" placeholder="User Rol" required autofocus>
+              <input type="text" id="rol" name="rol" class="form-control" placeholder="User Rol" required autofocus>
               <br>
               <label for="inputPassword" class="sr-only">Password</label>
-              <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+              <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
               <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
             </form>
         </div> <!-- /cover-container -->
        </div> <!-- /site-wrapper-inner -->
     </div> <!-- /site-wrapper -->
-  </body>
-</html>
-
     <!-- main js file -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="assets/js/jquery-1.10.1.min.js"><\/script>')</script>
     <script src="assets/js/main.js"></script>
+  </body>
+</html>

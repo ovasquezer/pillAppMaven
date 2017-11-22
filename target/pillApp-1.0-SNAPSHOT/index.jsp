@@ -35,8 +35,10 @@
             <div class="inner">
               <nav class="nav nav-masthead">
                 <a class="nav-link active" href="/pillApp/index.jsp">Home</a>
-                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="/pillApp/sign-in.jsp">Sign-in</a>
                 <a class="nav-link" href="/pillApp/register.jsp" >Register</a>
+                <a class="nav-link" href="#" >Prescriptions</a>
+                <a class="nav-link" href="/pillApp/contact-list.jsp" >Contacts</a>
               </nav>
             </div>
           </header>

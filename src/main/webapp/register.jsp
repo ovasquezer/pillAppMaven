@@ -28,7 +28,7 @@
 
     <div class="container">
 
-      <form class="form-signin" id="registerForm" action="http://localhost:8084/pillApp/CreateNewUserServlet?rol=test" method="get">
+      <form class="form-signin" id="registerForm" action="http://localhost:8084/pillApp/CreateNewUserServlet" method="get">
         <h2 class="form-signin-heading" align="center">Registration </h2>
         <label for="inputFirstName" class="sr-only">Email address</label>
         <input type="email" id="username" name="username" class="form-control" placeholder="Email address" required autofocus>

@@ -5,22 +5,8 @@
  */
 package com.pillapp.pillapp.servlets;
 
-import static com.pillapp.pillapp.utils.Constants.DURATION_KEY;
-import static com.pillapp.pillapp.utils.Constants.MEDICINE_KEY;
-import static com.pillapp.pillapp.utils.Constants.LAPSE_KEY;
-import static com.pillapp.pillapp.utils.Constants.QUANTITY_KEY;
-import static com.pillapp.pillapp.utils.Constants.START_DATE_KEY;
-import static com.pillapp.pillapp.utils.Constants.TREATMENT_KEY;
-import static com.pillapp.pillapp.utils.Constants.USERNAME_KEY;
-import com.pillapp.pillapp.utils.JCRUtils;
 import java.io.IOException;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.jcr.Node;
-import javax.jcr.RepositoryException;
-import javax.jcr.Session;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jvasquez
  */
-@WebServlet(name = "CreatePrescriptionServlet", urlPatterns = {"/CreatePrescriptionServlet"})
-public class CreatePrescriptionServlet extends HttpServlet {
+@WebServlet(name = "LogoutServlet", urlPatterns = {"/LogoutServlet"})
+public class LogoutServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,20 +28,25 @@ public class CreatePrescriptionServlet extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     * @throws javax.jcr.RepositoryException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, RepositoryException {
-        String contactPerson = request.getParameter(USERNAME_KEY);
-        String treatment = request.getParameter(TREATMENT_KEY);
-        
-        String medicine = request.getParameter(START_DATE_KEY);
-        String startDate = request.getParameter(MEDICINE_KEY);
-        String duration = request.getParameter(DURATION_KEY);
-        String quantity = request.getParameter(QUANTITY_KEY);
-        String period = request.getParameter(LAPSE_KEY);
-        
-        
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        try {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet LogoutServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet LogoutServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        } finally {
+            out.close();
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -70,11 +61,7 @@ public class CreatePrescriptionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (RepositoryException ex) {
-            Logger.getLogger(CreatePrescriptionServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -88,11 +75,7 @@ public class CreatePrescriptionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (RepositoryException ex) {
-            Logger.getLogger(CreatePrescriptionServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

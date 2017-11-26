@@ -6,8 +6,13 @@
 package com.pillapp.pillapp.servlets;
 
 import static com.pillapp.pillapp.utils.Constants.DOCTOR;
+import static com.pillapp.pillapp.utils.Constants.PASSWORD_KEY;
 import static com.pillapp.pillapp.utils.Constants.PATIENT;
 import static com.pillapp.pillapp.utils.Constants.PHARMACY;
+import static com.pillapp.pillapp.utils.Constants.PILLAPP_HOST;
+import static com.pillapp.pillapp.utils.Constants.SLASH;
+import static com.pillapp.pillapp.utils.Constants.TREATMENT_KEY;
+import static com.pillapp.pillapp.utils.Constants.USERNAME_KEY;
 import com.pillapp.pillapp.utils.JCRUtils;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -17,6 +22,7 @@ import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -43,15 +49,35 @@ public class authentication extends HttpServlet {
         String user = "";
         JCRUtils jcrUtils = new JCRUtils();
         Session session = jcrUtils.repoLogin();
+        String password = request.getParameter(PASSWORD_KEY);
+        String username = request.getParameter(USERNAME_KEY);
+        String ip = request.getRemoteAddr();
         Node root = session.getRootNode();
-        Node doctor = jcrUtils.getParentUser(root, DOCTOR);
-        Node patient = jcrUtils.getParentUser(root, PATIENT);
-        Node pharmacy = jcrUtils.getParentUser(root, PHARMACY);
-        Node loginUser = jcrUtils.getLoginUser(doctor,patient,pharmacy,user);
+        Node pillAppNode = root.getNode("pillApp");
+        Node parentUsers = pillAppNode.getNode("users");
+        Node doctor = jcrUtils.getParentUser(parentUsers, DOCTOR);
+        Node patient = jcrUtils.getParentUser(parentUsers, PATIENT);
+        Node pharmacy = jcrUtils.getParentUser(parentUsers, PHARMACY);
+        Node loginUser = jcrUtils.getLoginUser(doctor,patient,pharmacy,username);
+        System.out.println("---------- " + password);
+        System.out.println("----------1 " + username);
         if(null != loginUser){
-            
+            System.out.println("----------2 " + loginUser);
+            if(loginUser.hasProperty(PASSWORD_KEY)){
+                System.out.println("----------3 " + password + " ---- "+ loginUser.getProperty(PASSWORD_KEY).getString());
+                if(loginUser.getProperty(PASSWORD_KEY).getString().equals(password)){
+                    System.out.println("----------4 " + password);
+                    Node userSessionNdeo = jcrUtils.createUserSession(username, ip, session);
+                    Cookie sessionCookie = new Cookie(USERNAME_KEY, username);
+                    sessionCookie.setMaxAge(-1);
+                    response.addCookie(sessionCookie);
+                    response.sendRedirect(PILLAPP_HOST + SLASH + "new-prescription.jsp");
+                }
+            }
+        } else {
+            response.sendRedirect(PILLAPP_HOST + SLASH + "?error=1");
         }
-        
+        jcrUtils.repoLogout(session);
     }
     
     

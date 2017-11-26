@@ -56,10 +56,11 @@
                       <div class="panel-heading">Dynamic Form Fields - Add & Remove Multiple fields</div>
                       <div class="panel-heading">Education Experience</div>
                       <div class="panel-body">
-
+                    <form class="form-signin" id="registerForm" action="http://localhost:8084/pillApp/CreatePrescriptionServlet" method="get">
                         <div id="education_fields"></div>
+                        
                         <div class="col-sm-2 multifield-spacing nopadding">
-                          <div class="form-group">
+                          <div class="form-group" >
                             <input type="text" class="form-control" id="Firstname" name="Firstname[]" value="" placeholder="First Name">
                           </div>
                         </div>
@@ -100,7 +101,9 @@
                       <div class="panel-footer">
                         <small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another form field.</small>, <small>Press <span class="glyphicon glyphicon-minus gs"></span> to remove form field.</small>
                       </div>
-                    </div>                  
+                    </div>   
+                  <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+</form>
                   <!-- End of multi field component -->
 
               </div> <!-- /container -->

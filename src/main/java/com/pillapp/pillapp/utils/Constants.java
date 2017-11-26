@@ -35,6 +35,7 @@ public class Constants {
     public static final String EQUAL_KEY = "=";
     public static final String RESPONSE = "response";
     public static final String UFT_8_KEY ="UTF-8";
+    public static final String PILLAPP_HOST = "http://localhost:8084/pillApp";
     
     public static final String DOCTOR = "doctor";
     public static final String PATIENT = "patient";
@@ -47,5 +48,13 @@ public class Constants {
     public static final String STARTDAY_KEY = "startDate";
     public static final String ENDDATE_KEY = "endDate";
     public static final String DESCRIPTION_KEY = "description";
+    public static final String SESSION_KEY = "session";
+       
+    public static final String TREATMENT_KEY = "treatment";
+    public static final String START_DATE_KEY = "startDate";
+    public static final String MEDICINE_KEY = "medicine";
+    public static final String DURATION_KEY = "duration";
+    public static final String QUANTITY_KEY = "quantity";
+    public static final String LAPSE_KEY = "lapse";
     
 }

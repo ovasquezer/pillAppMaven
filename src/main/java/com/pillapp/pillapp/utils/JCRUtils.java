@@ -5,7 +5,9 @@
  */
 package com.pillapp.pillapp.utils;
 
+import static com.pillapp.pillapp.utils.Constants.DASH;
 import static com.pillapp.pillapp.utils.Constants.EMPTY_SPACE;
+import static com.pillapp.pillapp.utils.Constants.SESSION_KEY;
 import java.net.MalformedURLException;
 import java.util.Iterator;
 import javax.jcr.Node;
@@ -25,7 +27,7 @@ public class JCRUtils {
     public Session repoLogin(){
         try{
             /**
-             * using the url lolahost:8080 where is up the jackrabbit repository
+             * using the url lolahost:9090 where is up the jackrabbit repository
              */
 
             Repository repository =
@@ -97,6 +99,24 @@ public class JCRUtils {
             result = parentNode.getNode(nodeName);
         } 
         return result;
+    }
+    
+    public Node createUserSession(String username, String ip, Session jcrSession) throws RepositoryException{
+        Node rootNode = jcrSession.getRootNode();
+        Node sessionNode = null;
+        if(rootNode.hasNode(SESSION_KEY)){
+            sessionNode = rootNode.getNode(SESSION_KEY);
+        } else {
+            sessionNode = rootNode.addNode(SESSION_KEY);
+        }
+        Node userSession = null;
+        if(sessionNode.hasNode(username + DASH + ip)){
+            userSession = sessionNode.getNode(username + DASH + ip);
+        } else {
+            userSession = sessionNode.addNode(username + DASH + ip);
+        }
+        jcrSession.save();
+        return userSession;
     }
 
 }

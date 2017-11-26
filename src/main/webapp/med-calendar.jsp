@@ -8,230 +8,255 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
-        <script>
-            $(document).ready(function() {
-                var date = new Date();
-                    var d = date.getDate();
-                    var m = date.getMonth();
-                    var y = date.getFullYear();
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!--<link rel="icon" href="../../../../favicon.ico">-->
 
-                    /*  className colors
+        <title>Signin Template for Bootstrap</title>
 
-                    className: default(transparent), important(red), chill(pink), success(green), info(blue)
+        <!-- Bootstrap core CSS -->
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 
-                    */		
-
-
-                    /* initialize the external events
-                    -----------------------------------------------------------------*/
-
-                    $('#external-events div.external-event').each(function() {
-
-                            // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
-                            // it doesn't need to have a start or end
-                            var eventObject = {
-                                    title: $.trim($(this).text()) // use the element's text as the event title
-                            };
-
-                            // store the Event Object in the DOM element so we can get to it later
-                            $(this).data('eventObject', eventObject);
-
-                            // make the event draggable using jQuery UI
-                            $(this).draggable({
-                                    zIndex: 999,
-                                    revert: true,      // will cause the event to go back to its
-                                    revertDuration: 0  //  original position after the drag
-                            });
-
-                    });
-
-
-                    /* initialize the calendar
-                    -----------------------------------------------------------------*/
-
-                    var calendar =  $('#calendar').fullCalendar({
-                            header: {
-                                    left: 'title',
-                                    center: 'agendaDay,agendaWeek,month',
-                                    right: 'prev,next today'
-                            },
-                            editable: true,
-                            firstDay: 1, //  1(Monday) this can be changed to 0(Sunday) for the USA system
-                            selectable: true,
-                            defaultView: 'month',
-
-                            axisFormat: 'h:mm',
-                            columnFormat: {
-                    month: 'ddd',    // Mon
-                    week: 'ddd d', // Mon 7
-                    day: 'dddd M/d',  // Monday 9/7
-                    agendaDay: 'dddd d'
-                },
-                titleFormat: {
-                    month: 'MMMM yyyy', // September 2009
-                    week: "MMMM yyyy", // September 2009
-                    day: 'MMMM yyyy'                  // Tuesday, Sep 8, 2009
-                },
-                            allDaySlot: false,
-                            selectHelper: true,
-                            select: function(start, end, allDay) {
-                                    var title = prompt('Event Title:');
-                                    if (title) {
-                                            calendar.fullCalendar('renderEvent',
-                                                    {
-                                                            title: title,
-                                                            start: start,
-                                                            end: end,
-                                                            allDay: allDay
-                                                    },
-                                                    true // make the event "stick"
-                                            );
-                                    }
-                                    calendar.fullCalendar('unselect');
-                            },
-                            droppable: true, // this allows things to be dropped onto the calendar !!!
-                            drop: function(date, allDay) { // this function is called when something is dropped
-
-                                    // retrieve the dropped element's stored Event Object
-                                    var originalEventObject = $(this).data('eventObject');
-
-                                    // we need to copy it, so that multiple events don't have a reference to the same object
-                                    var copiedEventObject = $.extend({}, originalEventObject);
-
-                                    // assign it the date that was reported
-                                    copiedEventObject.start = date;
-                                    copiedEventObject.allDay = allDay;
-
-                                    // render the event on the calendar
-                                    // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-                                    $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
-
-                                    // is the "remove after drop" checkbox checked?
-                                    if ($('#drop-remove').is(':checked')) {
-                                            // if so, remove the element from the "Draggable Events" list
-                                            $(this).remove();
-                                    }
-
-                            },
-
-                            events: [
-                                    {
-                                            title: 'All Day Event',
-                                            start: new Date(y, m, 1)
-                                    },
-                                    {
-                                            id: 999,
-                                            title: 'Repeating Event',
-                                            start: new Date(y, m, d-3, 16, 0),
-                                            allDay: false,
-                                            className: 'info'
-                                    },
-                                    {
-                                            id: 999,
-                                            title: 'Repeating Event',
-                                            start: new Date(y, m, d+4, 16, 0),
-                                            allDay: false,
-                                            className: 'info'
-                                    },
-                                    {
-                                            title: 'Meeting',
-                                            start: new Date(y, m, d, 10, 30),
-                                            allDay: false,
-                                            className: 'important'
-                                    },
-                                    {
-                                            title: 'Lunch',
-                                            start: new Date(y, m, d, 12, 0),
-                                            end: new Date(y, m, d, 14, 0),
-                                            allDay: false,
-                                            className: 'important'
-                                    },
-                                    {
-                                            title: 'Birthday Party',
-                                            start: new Date(y, m, d+1, 19, 0),
-                                            end: new Date(y, m, d+1, 22, 30),
-                                            allDay: false,
-                                    },
-                                    {
-                                            title: 'Click for Google',
-                                            start: new Date(y, m, 28),
-                                            end: new Date(y, m, 29),
-                                            url: 'http://google.com/',
-                                            className: 'success'
-                                    }
-                            ],			
-                    });
-
-
-            });
-        </script>
-        <style>
-
-	body {
-	    margin-bottom: 40px;
-		margin-top: 40px;
-		text-align: center;
-		font-size: 14px;
-		font-family: 'Roboto', sans-serif;
-		background:url(http://www.digiphotohub.com/wp-content/uploads/2015/09/bigstock-Abstract-Blurred-Background-Of-92820527.jpg);
-		}
-		
-	#wrap {
-		width: 1100px;
-		margin: 0 auto;
-		}
-		
-	#external-events {
-		float: left;
-		width: 150px;
-		padding: 0 10px;
-		text-align: left;
-		}
-		
-	#external-events h4 {
-		font-size: 16px;
-		margin-top: 0;
-		padding-top: 1em;
-		}
-		
-	.external-event { /* try to mimick the look of a real event */
-		margin: 10px 0;
-		padding: 2px 4px;
-		background: #3366CC;
-		color: #fff;
-		font-size: .85em;
-		cursor: pointer;
-		}
-		
-	#external-events p {
-		margin: 1.5em 0;
-		font-size: 11px;
-		color: #666;
-		}
-		
-	#external-events p input {
-		margin: 0;
-		vertical-align: middle;
-		}
-
-	#calendar { /* 		float: right; */
-                margin: 0 auto;
-                width: 900px;
-                background-color: #FFFFFF;
-                border-radius: 6px;
-                box-shadow: 0 1px 2px #C3C3C3;
-                -webkit-box-shadow: 0px 0px 21px 2px rgba(0,0,0,0.18);
-                -moz-box-shadow: 0px 0px 21px 2px rgba(0,0,0,0.18);
-                box-shadow: 0px 0px 21px 2px rgba(0,0,0,0.18);
-                }
-
-        </style>
+        <!-- Custom styles for this template -->
+        <link href="assets/css/medcalendar.css" rel="stylesheet">
     </head>
     <body>
-        <div id='wrap'>
-            <div id='calendar'></div>
-            <div style='clear:both'></div>
+        <div class="site-wrapper">
+          <div class="site-wrapper-inner">
+            <div class="cover-container">
+              <header class="masthead clearfix">
+                <div class="inner">
+                  <nav class="nav nav-masthead">
+                    <a class="nav-link" href="/pillApp/index.jsp">Home</a>
+                    <a class="nav-link" href="/pillApp/sign-in.jsp">Sign-in</a>
+                    <a class="nav-link" href="/pillApp/register.jsp" >Register</a>
+                    <a class="nav-link active" href="#" >Prescriptions</a>
+                    <a class="nav-link" href="/pillApp/contact-list.jsp" >Contacts</a>
+                  </nav>
+                </div>
+              </header>
+            <div id="calendar" class="cover-content-container">
+                <ul class="weekdays">
+                    <li>Sunday</li>
+                    <li>Monday</li>
+                    <li>Tuesday</li>
+                    <li>Wednesday</li>
+                    <li>Thursday</li>
+                    <li>Friday</li>
+                    <li>Saturday</li>
+                </ul>
+
+                <!-- Days from previous month -->
+
+                <ul class="days">
+                    <li class="day other-month">
+                        <div class="date">27</div>                      
+                    </li>
+                    <li class="day other-month">
+                        <div class="date">28</div>
+                        <div class="event">
+                            <div class="event-desc">
+                                HTML 5 lecture with Brad Traversy from Eduonix
+                            </div>
+                            <div class="event-time">
+                                1:00pm to 3:00pm
+                            </div>
+                        </div>                      
+                    </li>
+                    <li class="day other-month">
+                        <div class="date">29</div>                      
+                    </li>
+                    <li class="day other-month">
+                        <div class="date">30</div>                      
+                    </li>
+                    <li class="day other-month">
+                        <div class="date">31</div>                      
+                    </li>
+
+                    <!-- Days in current month -->
+
+                    <li class="day">
+                        <div class="date">1</div>                       
+                    </li>
+                    <li class="day">
+                        <div class="date">2</div>
+                        <div class="event">
+                            <div class="event-desc">
+                                Career development @ Community College room #402
+                            </div>
+                            <div class="event-time">
+                                2:00pm to 5:00pm
+                            </div>
+                        </div>                      
+                    </li>
+                </ul>
+
+                    <!-- Row #2 -->
+
+                <ul class="days">
+                    <li class="day">
+                        <div class="date">3</div>                       
+                    </li>
+                    <li class="day">
+                        <div class="date">4</div>                       
+                    </li>
+                    <li class="day">
+                        <div class="date">5</div>                       
+                    </li>
+                    <li class="day">
+                        <div class="date">6</div>                       
+                    </li>
+                    <li class="day">
+                        <div class="date">7</div>
+                        <div class="event">
+                            <div class="event-desc">
+                                Group Project meetup
+                            </div>
+                            <div class="event-time">
+                                6:00pm to 8:30pm
+                            </div>
+                        </div>                      
+                    </li>
+                    <li class="day">
+                        <div class="date">8</div>                       
+                    </li>
+                    <li class="day">
+                        <div class="date">9</div>                       
+                    </li>
+                </ul>
+
+                    <!-- Row #3 -->
+
+                <ul class="days">
+                    <li class="day">
+                        <div class="date">10</div>                      
+                    </li>
+                    <li class="day">
+                        <div class="date">11</div>                      
+                    </li>
+                    <li class="day">
+                        <div class="date">12</div>                      
+                    </li>
+                    <li class="day">
+                        <div class="date">13</div>                      
+                    </li>
+                    <li class="day">
+                        <div class="date">14</div><div class="event">
+                            <div class="event-desc">
+                                Board Meeting
+                            </div>
+                            <div class="event-time">
+                                1:00pm to 3:00pm
+                            </div>
+                        </div>                      
+                    </li>
+                    <li class="day">
+                        <div class="date">15</div>                      
+                    </li>
+                    <li class="day">
+                        <div class="date">16</div>                      
+                    </li>
+                </ul>
+
+                    <!-- Row #4 -->
+
+                <ul class="days">
+                    <li class="day">
+                        <div class="date">17</div>                      
+                    </li>
+                    <li class="day">
+                        <div class="date">18</div>                      
+                    </li>
+                    <li class="day">
+                        <div class="date">19</div>                      
+                    </li>
+                    <li class="day">
+                        <div class="date">20</div>                      
+                    </li>
+                    <li class="day">
+                        <div class="date">21</div>                      
+                    </li>
+                    <li class="day">
+                        <div class="date">22</div>
+                        <div class="event">
+                            <div class="event-desc">
+                                Conference call
+                            </div>
+                            <div class="event-time">
+                                9:00am to 12:00pm
+                            </div>
+                        </div>                      
+                    </li>
+                    <li class="day">
+                        <div class="date">23</div>                      
+                    </li>
+                </ul>
+
+                        <!-- Row #5 -->
+
+                <ul class="days">
+                    <li class="day">
+                        <div class="date">24</div>                      
+                    </li>
+                    <li class="day">
+                        <div class="date">25</div>
+                        <div class="event">
+                            <div class="event-desc">
+                                Conference Call
+                            </div>
+                            <div class="event-time">
+                                1:00pm to 3:00pm
+                            </div>
+                        </div>                      
+                    </li>
+                    <li class="day">
+                        <div class="date">26</div>                      
+                    </li>
+                    <li class="day">
+                        <div class="date">27</div>                      
+                    </li>
+                    <li class="day">
+                        <div class="date">28</div>                      
+                    </li>
+                    <li class="day">
+                        <div class="date">29</div>                      
+                    </li>
+                    <li class="day">
+                        <div class="date">30</div>                      
+                    </li>
+                </ul>
+
+                <!-- Row #6 -->
+
+                <ul class="days">
+                    <li class="day">
+                        <div class="date">31</div>                      
+                    </li>
+                    <li class="day other-month">
+                        <div class="date">1</div> <!-- Next Month -->                       
+                    </li>
+                    <li class="day other-month">
+                        <div class="date">2</div>                       
+                    </li>
+                    <li class="day other-month">
+                        <div class="date">3</div>                       
+                    </li>
+                    <li class="day other-month">
+                        <div class="date">4</div>                       
+                    </li>
+                    <li class="day other-month">
+                        <div class="date">5</div>                       
+                    </li>
+                    <li class="day other-month">
+                        <div class="date">6</div>                       
+                    </li>
+                </ul>
+
+            </div><!-- /. calendar -->
+            </div>
+          </div>
         </div>
     </body>
 </html>

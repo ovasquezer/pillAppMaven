@@ -21,14 +21,27 @@
 
     <!-- Custom styles for this template -->
     <link href="assets/css/register.css" rel="stylesheet">
+    <link href="assets/css/cover.css" rel="stylesheet">
+
     
   </head>
 
   <body>
-
-    <div class="container">
-
-      <form class="form-signin" id="registerForm" action="http://localhost:8084/pillApp/CreateNewUserServlet" method="get">
+    <div class="site-wrapper">
+      <div class="site-wrapper-inner">
+        <div class="cover-container">
+            <header class="masthead clearfix">
+                <div class="inner">
+                  <nav class="nav nav-masthead">
+                    <a class="nav-link" href="/pillApp/index.jsp">Home</a>
+                    <a class="nav-link" href="/pillApp/sign-in.jsp">Sign-in</a>
+                    <a class="nav-link active" href="/pillApp/register.jsp" >Register</a>
+                    <a class="nav-link" href="#" >Prescriptions</a>
+                    <a class="nav-link" href="/pillApp/contact-list.jsp" >Contacts</a>
+                  </nav>
+                </div>
+            </header>
+            <form class="form-signin" id="registerForm" action="/pillApp/CreateNewUserServlet" method="get">
         <h2 class="form-signin-heading" align="center">Registration </h2>
         <label for="inputFirstName" class="sr-only">Email address</label>
         <input type="email" id="username" name="username" class="form-control" placeholder="Email address" required autofocus>
@@ -49,12 +62,12 @@
         <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
       </form>
-
-    </div> <!-- /container -->
-  </body>
-</html>
-
+        </div> <!-- /cover-container -->
+       </div> <!-- /site-wrapper-inner -->
+    </div> <!-- /site-wrapper -->
     <!-- main js file -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="assets/js/jquery-1.10.1.min.js"><\/script>')</script>
     <script src="assets/js/main.js"></script>
+  </body>
+</html>

@@ -23,11 +23,21 @@
         <link href="assets/css/medcalendar.css" rel="stylesheet">
     </head>
     <body>
-        <div id="calendar-wrap">
-            <header>
-                <h1>August 2014</h1>
-            </header>
-            <div id="calendar">
+        <div class="site-wrapper">
+          <div class="site-wrapper-inner">
+            <div class="cover-container">
+              <header class="masthead clearfix">
+                <div class="inner">
+                  <nav class="nav nav-masthead">
+                    <a class="nav-link" href="/pillApp/index.jsp">Home</a>
+                    <a class="nav-link" href="/pillApp/sign-in.jsp">Sign-in</a>
+                    <a class="nav-link" href="/pillApp/register.jsp" >Register</a>
+                    <a class="nav-link active" href="#" >Prescriptions</a>
+                    <a class="nav-link" href="/pillApp/contact-list.jsp" >Contacts</a>
+                  </nav>
+                </div>
+              </header>
+            <div id="calendar" class="cover-content-container">
                 <ul class="weekdays">
                     <li>Sunday</li>
                     <li>Monday</li>
@@ -245,6 +255,8 @@
                 </ul>
 
             </div><!-- /. calendar -->
-        </div><!-- /. wrap -->
+            </div>
+          </div>
+        </div>
     </body>
 </html>

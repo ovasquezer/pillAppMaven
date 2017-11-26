@@ -29,7 +29,7 @@
       <div class="site-wrapper-inner">
 
         <div class="cover-container">
-            <header class="masthead clearfix">
+          <header class="masthead clearfix">
             <div class="inner">
               <nav class="nav nav-masthead">
                 <a class="nav-link" href="/pillApp/index.jsp">Home</a>

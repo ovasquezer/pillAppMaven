@@ -47,7 +47,6 @@ body {
   display: table-cell;
   vertical-align: top;
   padding-bottom: 150px;
-  padding-top: 150px;
 }
 .cover-container {
   margin-right: auto;
@@ -258,10 +257,10 @@ body {
 #calendar .event {
   clear: both;
   display: block;
-  font-size: 13px;
+  font-size: 10px;
   border-radius: 4px;
   padding: 5px;
-  margin-top: 40px;
+  margin-top: 27px;
   margin-bottom: 5px;
   line-height: 14px;
   background: #e4f2f2;

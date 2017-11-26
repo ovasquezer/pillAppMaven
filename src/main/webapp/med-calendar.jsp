@@ -37,6 +37,7 @@
                   </nav>
                 </div>
               </header>
+                <h1>November</h1>    
             <div id="calendar" class="cover-content-container">
                 <ul class="weekdays">
                     <li>Sunday</li>

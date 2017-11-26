@@ -59,14 +59,9 @@ public class authentication extends HttpServlet {
         Node patient = jcrUtils.getParentUser(parentUsers, PATIENT);
         Node pharmacy = jcrUtils.getParentUser(parentUsers, PHARMACY);
         Node loginUser = jcrUtils.getLoginUser(doctor,patient,pharmacy,username);
-        System.out.println("---------- " + password);
-        System.out.println("----------1 " + username);
         if(null != loginUser){
-            System.out.println("----------2 " + loginUser);
             if(loginUser.hasProperty(PASSWORD_KEY)){
-                System.out.println("----------3 " + password + " ---- "+ loginUser.getProperty(PASSWORD_KEY).getString());
                 if(loginUser.getProperty(PASSWORD_KEY).getString().equals(password)){
-                    System.out.println("----------4 " + password);
                     Node userSessionNdeo = jcrUtils.createUserSession(username, ip, session);
                     Cookie sessionCookie = new Cookie(USERNAME_KEY, username);
                     sessionCookie.setMaxAge(-1);

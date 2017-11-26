@@ -118,5 +118,25 @@ public class JCRUtils {
         jcrSession.save();
         return userSession;
     }
+    
+    public Node createPrescription(String name, String treatment, String med, 
+            String frequency, String period, String startingDay, Node userNode, 
+            Session jcrSession) throws RepositoryException{
+        Node prescriptionNode = null;
+        if(userNode != null){
+            if(userNode.hasNode(name)){
+                
+            } else {
+                Node treatmentNode = userNode.addNode(name +  DASH + treatment);
+                treatmentNode.setProperty("treatment", treatment);
+                treatmentNode.setProperty("medicine", med);
+                treatmentNode.setProperty("frequency", frequency);
+                treatmentNode.setProperty("period", period);
+                treatmentNode.setProperty("startingDay", startingDay);
+            }
+        }
+        jcrSession.save();
+        return prescriptionNode;
+    }
 
 }

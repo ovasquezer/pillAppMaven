@@ -219,6 +219,8 @@ body {
 #calendar ul.weekdays {
   height: 40px;
   background: #8e352e;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
 }
 
 #calendar ul.weekdays li {
@@ -271,7 +273,7 @@ body {
 
 #calendar .event-desc {
   color: #666;
-  margin: 3px 0 7px 0;
+  margin: 3px 0 0 0;
   text-decoration: none;
 }
 
